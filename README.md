@@ -75,3 +75,97 @@ This demonstrates persistent memory beyond a single chat session.
 - Meeting preparation workflows
 - Multi-user memory
 - Email follow-up generation
+
+- ## Architecture
+
+```text
+User
+  │
+  ▼
+Telegram Bot
+  │
+  ▼
+Deal Intelligence Agent
+  │
+  ├── Recall Memory → Hindsight
+  │
+  ├── Generate Response → Groq GPT-OSS-120B
+  │
+  └── Store New Facts → Hindsight
+```
+
+## Example Workflow
+
+### Interaction 1
+
+User:
+
+> I met Rajesh from Microsoft. He likes technical discussions.
+
+Agent:
+
+> Noted. Rajesh works at Microsoft and enjoys technical discussions.
+
+The information is stored in Hindsight.
+
+### Interaction 2 (After Restart)
+
+User:
+
+> What do you remember about Rajesh?
+
+Agent:
+
+> Rajesh works at Microsoft, enjoys technical discussions, and has been discussed previously.
+
+The memory survives application restarts because it is stored in Hindsight.
+
+## Why Hindsight
+
+Most AI assistants forget information once the session ends.
+
+Hindsight provides persistent memory that allows the agent to:
+
+- Remember people
+- Track companies
+- Recall commitments
+- Store preferences
+- Improve responses over time
+
+This allows the agent to behave more like a long-term business assistant rather than a stateless chatbot.
+
+## Persistent Memory Proof
+
+The following workflow demonstrates persistence:
+
+1. User shares information about a prospect.
+2. Agent stores the information using Hindsight.
+3. Application is stopped.
+4. Application is restarted.
+5. User asks about the prospect.
+6. Agent recalls previously stored information.
+
+This demonstrates memory persistence beyond a single runtime session.
+
+## Setup
+
+Install dependencies:
+
+```bash
+pip install -r requirements.txt
+```
+
+Create a `.env` file:
+
+```env
+GROQ_API_KEY=your_key
+TELEGRAM_BOT_TOKEN=your_token
+HINDSIGHT_API_KEY=your_key
+HINDSIGHT_BANK_ID=your_bank_id
+```
+
+Run:
+
+```bash
+python telegram_bot.py
+```
