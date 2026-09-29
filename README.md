@@ -169,3 +169,18 @@ Run:
 ```bash
 python telegram_bot.py
 ```
+
+## Project Links
+
+### Medium Article
+https://medium.com/@umas28721/i-stopped-repeating-customer-information-to-my-ai-agent-babdf8b254d7
+
+### GitHub Repository
+https://github.com/Bala863/deal-intel-final
+
+### Hindsight
+https://github.com/vectorize-io/hindsight
+
+### Demo Video
+https://youtu.be/1HCNsjUQ4J8?si=zWHMgE8NWc2W5VXz
+
